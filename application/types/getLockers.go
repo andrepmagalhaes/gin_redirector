@@ -23,7 +23,7 @@ type GetLockersParams struct {
 	Versao_Mensageira             string `json:"Versao_Mensageira"`
 }
 
-type EstacaoLocker struct {
+type estacaoLocker struct {
 	Codigo_Pais_Locker      string `json:"Codigo_Pais_Locker"`
 	Cidade_Locker           string `json:"Cidade_Locker"`
 	Cep_Locker              string `json:"Cep_Locker"`
@@ -62,5 +62,9 @@ type GetLockersResponse struct {
 	ID_Rede_Lockers    string          `json:"ID_Rede_Lockers"`
 	Versao_Mensageira  string          `json:"Versao_Mensageira"`
 	Data_Hora_Resposta string          `json:"Data_Hora_Resposta"`
-	Estacao_Locker     []EstacaoLocker `json:"Estacao_Locker"`
+	Estacao_Locker     []estacaoLocker `json:"Estacao_Locker"`
+}
+
+type GetLockersResponseError struct {
+	Detail string `json:"detail"`
 }

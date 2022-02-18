@@ -1,12 +1,31 @@
 package main
 
 import (
+	"fmt"
+	"os"
+	"strconv"
+
 	"github.com/andrepmagalhaes/redirector/application"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	application.Init(8000)
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	port, err := strconv.Atoi(os.Getenv("PORT"))
+
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	application.Init(port)
 
 	// response, err := getAuth()
 
