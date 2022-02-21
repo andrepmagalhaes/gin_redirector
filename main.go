@@ -18,7 +18,7 @@ func main() {
 		return
 	}
 
-	port, err := strconv.Atoi(os.Getenv("PORT"))
+	port, err := strconv.Atoi(os.Getenv("$PORT"))
 
 	if err != nil {
 		fmt.Println(err.Error())
