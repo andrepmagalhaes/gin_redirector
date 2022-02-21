@@ -6,19 +6,18 @@ import (
 	"strconv"
 
 	"github.com/andrepmagalhaes/redirector/application"
-	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	err := godotenv.Load(".env")
+	// err := godotenv.Load(".env")
 
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
+	// if err != nil {
+	// 	fmt.Println(err.Error())
+	// 	return
+	// }
 
-	port, err := strconv.Atoi(os.Getenv("$PORT"))
+	port, err := strconv.Atoi(os.Getenv("PORT"))
 
 	if err != nil {
 		fmt.Println(err.Error())
