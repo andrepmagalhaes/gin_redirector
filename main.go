@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"strconv"
 
 	"github.com/andrepmagalhaes/redirector/application"
 )
@@ -17,14 +15,7 @@ func main() {
 	// 	return
 	// }
 
-	port, err := strconv.Atoi(os.Getenv("PORT"))
-
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-
-	application.Init(port)
+	application.Init(os.Getenv("PORT"))
 
 	// response, err := getAuth()
 
