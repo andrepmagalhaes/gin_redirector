@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 
 	"github.com/andrepmagalhaes/redirector/application/types"
@@ -20,7 +21,7 @@ func GetLockers(c *gin.Context) {
 		return
 	}
 
-	fmt.Println("param", data.Codigo_de_MSG)
+	fmt.Println("param", data)
 
 	json_data, err := json.Marshal(data)
 
@@ -49,30 +50,109 @@ func GetLockers(c *gin.Context) {
 		return
 	}
 
+	respData, err := ioutil.ReadAll(resp.Body)
+
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 
-	var result types.GetLockersResponse
-	var result2 types.GetLockersResponseError
-	decoder := json.NewDecoder(resp.Body)
-
-	buf := new(bytes.Buffer)
-	buf.ReadFrom(resp.Body)
-	newStr := buf.String()
-	fmt.Println(newStr)
-
-	if err := decoder.Decode(&result); err != nil {
-		if err := decoder.Decode(&result2); err != nil {
-			fmt.Println(err.Error())
+	fmt.Println("status: ", resp.Status)
+	fmt.Println("statusCode: ", resp.StatusCode)
+	fmt.Println("data", respData)
+	switch resp.StatusCode {
+	case 200:
+		{
+			var result types.GetLockersResponse
+			if err := json.Unmarshal(respData, &result); err != nil {
+				fmt.Println(err.Error())
+				return
+			}
+			c.IndentedJSON(resp.StatusCode, &result)
 			return
 		}
-		fmt.Println("result2", result2.Detail)
-		c.IndentedJSON(http.StatusOK, &result2)
+	case 401:
+		{
+			var result types.Unathorized
+			if err := json.Unmarshal(respData, &result); err != nil {
+				fmt.Println(err.Error())
+				return
+			}
+			c.IndentedJSON(resp.StatusCode, &result)
+			return
+		}
 	}
 
-	fmt.Println("result", result.Codigo_de_MSG)
+	c.IndentedJSON(resp.StatusCode, "Unhandled Status")
 
-	c.IndentedJSON(http.StatusOK, &result)
+	// if resp.Status == "200" {
+	// 	var result types.GetLockersResponse
+	// 	if err := json.Unmarshal(respData, &result); err != nil {
+	// 		fmt.Println(err.Error())
+	// 		return
+	// 	}
+	// 	c.IndentedJSON(http.StatusOK, &result)
+	// 	return
+	// }
+	// elif resp.Status == "401" {
+	// 	var result types.GetLockersResponseError
+	// 	if err := json.Unmarshal(respData, &result); err != nil {
+	// 		fmt.Println(err.Error())
+	// 		return
+	// 	}
+	// 	c.IndentedJSON(http.StatusOK, &result)
+	// 	return
+	// }
+	// else {
+
+	// }
+
+	// var result types.GetLockersResponse
+	// var result2 types.GetLockersResponseError
+
+	// if err := json.Unmarshal(respData, &result); err != nil {
+	// 	fmt.Println(respData)
+	// 	fmt.Println(result)
+	// 	if err := json.Unmarshal(respData, &result2); err != nil {
+	// 		fmt.Println(respData)
+	// 		fmt.Println(result2)
+	// 		fmt.Println(err.Error())
+	// 		return
+	// 	}
+	// 	fmt.Println(respData)
+	// 	fmt.Println(result2)
+	// 	c.IndentedJSON(http.StatusOK, &result2)
+	// 	return
+	// }
+
+	// c.IndentedJSON(http.StatusOK, &result)
+
+	// resp2 := new(http.Response)
+	// resp2 = resp
+
+	// var result types.GetLockersResponse
+	// var result2 types.GetLockersResponseError
+	// decoder := json.NewDecoder(resp.Body)
+	// decoder2 := json.NewDecoder(resp2.Body)
+
+	// json.Unmarshal(decoder, &result)
+
+	// if err := decoder.Decode(&result); err != nil {
+	// 	fmt.Println("asdfasdfasdf")
+
+	// 	if err := decoder2.Decode(&result2); err != nil {
+
+	// 		fmt.Println("birl")
+	// 		fmt.Println("resp2", resp2.Body)
+	// 		fmt.Println(err.Error())
+	// 		return
+	// 	}
+	// 	fmt.Println("result2", result2.Detail)
+	// 	c.IndentedJSON(http.StatusOK, &result2)
+	// 	return
+	// }
+
+	// fmt.Println("result len: ", result)
+	// fmt.Println("result", result.Codigo_de_MSG)
+
 }
