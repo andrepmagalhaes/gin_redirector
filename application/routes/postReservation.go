@@ -56,6 +56,19 @@ func PostLockersReservation(c *gin.Context) {
 		return
 	}
 
+	fmt.Println("respData", len(respData))
+
+	if len(respData) == 692 {
+		fmt.Println("len(respData) == 692 //slot of given size not available")
+		var result types.PostReservationResponseUnavailable
+		if err := json.Unmarshal(respData, &result); err != nil {
+			fmt.Println(err.Error())
+			return
+		}
+		c.IndentedJSON(resp.StatusCode, &result)
+		return
+	}
+
 	switch resp.StatusCode {
 	case 200:
 		{

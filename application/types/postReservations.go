@@ -47,7 +47,7 @@ type infoEncomendasResponse struct {
 	ID_Encomenda                   string `json:"ID_Encomenda,omitempty"`
 	Etiqueta_Encomenda_Rede1minuto string `json:"Etiqueta_Encomenda_Rede1minuto,omitempty"`
 	Geracao_QRCODE                 string `json:"Geracao_QRCODE,omitempty"`
-	Geracao_Codigo_Abertura_Porta  string `json:"Geracao_Codigo_Abertura_Porta,omitempty"`
+	Geracao_Codigo_Abertura_Porta  int    `json:"Geracao_Codigo_Abertura_Porta,omitempty"`
 }
 
 type PostReservationResponse struct {
@@ -65,12 +65,37 @@ type PostReservationResponse struct {
 	Endereco_Locker                string                   `json:"Endereco_Locker,omitempty"`
 	Numero_Locker                  string                   `json:"Numero_Locker,omitempty"`
 	Complemento_Locker             string                   `json:"Complemento,omitempty"`
+	ID_Operador_Logistico          string                   `json:"ID_Operador_Logistico,omitempty"`
 	ID_da_Porta_do_Locker          string                   `json:"ID_da_Porta_do_Locker,omitempty"`
 	ID_do_Operador_da_Porta_Locker string                   `json:"ID_do_Operador_da_Porta_Locker,omitempty"`
-	ID_Transacao_Unica             int                      `json:"ID_Transacao_Unica,omitempty"`
-	Tipo_de_Servico_Reserva        int                      `json:"Tipo_de_Servico_Reserva,omitempty"`
+	ID_Transacao_Unica             string                   `json:"ID_Transacao_Unica,omitempty"`
+	Tipo_de_Servico_Reserva        string                   `json:"Tipo_de_Servico_Reserva,omitempty"`
 	DataHora_Inicio_Reserva        string                   `json:"DataHora_Inicio_Reserva,omitempty"`
 	DataHora_Final_Reserva         string                   `json:"DataHora_Final_Reserva,omitempty"`
 	Info_Encomendas                []infoEncomendasResponse `json:"info_encomendas,omitempty"`
 	Versao_Mensageria              string                   `json:"Versao_Mensageria,omitempty"`
+}
+
+type PostReservationResponseUnavailable struct {
+	Codigo_de_MSG           string `json:"Codigo_de_MSG,omitempty"`
+	ID_de_Referencia        string `json:"ID_de_Referencia,omitempty"`
+	ID_do_Solicitante       string `json:"ID_do_Solicitante,omitempty"`
+	ID_Rede_Lockers         int    `json:"ID_Rede_Lockers,omitempty"`
+	ID_da_Estacao_do_Locker string `json:"ID_da_Estacao_do,omitempty"`
+	Codigo_Resposta_MS06    string `json:"Codigo_Resposta_MS06,omitempty"`
+	Data_Hora_Resposta      string `json:"Data_Hora_Resposta,omitempty"`
+	Codigo_Pais_Locker      string `json:"Codigo_Pais_Locker,omitempty"`
+	CEP_Locker              string `json:"CEP_Locker,omitempty"`
+	Cidade_Locker           string `json:"Cidade_Locker,omitempty"`
+	Bairro_Locker           string `json:"Bairro_Locker,omitempty"`
+	Endereco_Locker         string `json:"Endereco_Locker,omitempty"`
+	Numero_Locker           string `json:"Numero_Locker,omitempty"`
+	Complemento_Locker      string `json:"Complemento,omitempty"`
+	ID_PSL_Designado        int    `json:"ID_PSL_Designado,omitempty"`
+	ID_Operador_Logistico   string `json:"ID_Operador_Logistico,omitempty"`
+	ID_da_Porta_do_Locker   string `json:"ID_da_Porta_do_Locker,omitempty"`
+	ID_Transacao_Unica      int    `json:"ID_Transacao_Unica,omitempty"`
+	Tipo_de_Servico_Reserva int    `json:"Tipo_de_Servico_Reserva,omitempty"`
+	DataHora_Inicio_Reserva string `json:"DataHora_Inicio_Reserva,omitempty"`
+	DataHora_Final_Reserva  string `json:"DataHora_Final_Res,omitempty"`
 }
