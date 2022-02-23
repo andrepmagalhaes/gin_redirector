@@ -52,8 +52,22 @@ func PostLockersSlots(c *gin.Context) {
 
 	respData, err := ioutil.ReadAll(resp.Body)
 
+	fmt.Println("respData len", len(respData))
+	fmt.Println("respData", respData)
+	fmt.Println("string respData: ", string(respData))
+
 	if err != nil {
 		fmt.Println(err.Error())
+		return
+	}
+
+	if len(respData) == 74 {
+		var result types.Unathorized
+		if err := json.Unmarshal(respData, &result); err != nil {
+			fmt.Println(err.Error())
+			return
+		}
+		c.IndentedJSON(resp.StatusCode, &result)
 		return
 	}
 

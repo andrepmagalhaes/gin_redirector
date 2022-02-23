@@ -63,3 +63,8 @@ type GetLockersSlotsResponse struct {
 	Lockers            []lockers `json:"Lockers,omitempty"`
 	Versao_Mensageria  string    `json:"Versao_Mensageria,omitempty"`
 }
+
+// type GetLockersSlotsIdInvalid struct {
+// 	Status_code int `json:"Status_code,omitempty"`
+
+// }
