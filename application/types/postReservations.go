@@ -34,7 +34,7 @@ type PostReservationParams struct {
 	Tipo_de_Servico_Reserva                                 int              `json:"Tipo_de_Servico_Reserva,omitempty"`
 	ID_Transacao_Unica                                      string           `json:"ID_Transacao_Unica,omitempty"`
 	ID_PSL_Designado                                        int              `json:"ID_PSL_Designado,omitempty"`
-	Autenticacao_Login_Operador_Logistico                   int              `json:"Autenticacao_Login,omitempty"`
+	Autenticacao_Login_Operador_Logistico                   int              `json:"Autenticacao_Login_Operador_Logistico,omitempty"`
 	Categoria_Porta                                         string           `json:"Categoria_Porta,omitempty"`
 	Geracao_de_QRCODE_na_Resposta_MS06                      int              `json:"Geracao_de_QRCODE_na_Resposta_MS06,omitempty"`
 	Geracao_de_Codigo_de_Abertura_de_Porta_na_Resposta_MS06 int              `json:"Geracao_de_Codigo_de_Abertura_de_Porta_na_Resposta_MS06,omitempty"`
