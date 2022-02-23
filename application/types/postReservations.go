@@ -3,11 +3,11 @@ package types
 type infoEncomendas struct {
 	ID_Encomenda                         int    `json:"ID_Encomenda,omitempty"`
 	Numero_Mobile_Shopper                string `json:"Numero_Mobile_Shopper,omitempty"`
-	Endereco_de_Email_do_Shopper         string `json:"Endereco_de_Email_,omitempty"`
+	Endereco_de_Email_do_Shopper         string `json:"Endereco_de_Email_do_Shopper,omitempty"`
 	CPF_CNPJ_Shopper                     string `json:"CPF_CNPJ_Shopper,omitempty"`
-	Moeda_Shopper                        string `json:"Moeda_Sho,omitempty"`
+	Moeda_Shopper                        string `json:"Moeda_Shopper,omitempty"`
 	Valor_Encomenda_Shopper              string `json:"Valor_Encomenda_Shopper,omitempty"`
-	Numero_Nota_Fiscal_Encomenda_Shopper string `json:"Numero_Nota_Fiscal_Encom,omitempty"`
+	Numero_Nota_Fiscal_Encomenda_Shopper string `json:"Numero_Nota_Fiscal_Encomenda_Shopper,omitempty"`
 	Codigo_País_Shopper                  string `json:"Codigo_País_Shopper,omitempty"`
 	Cidade_Shopper                       string `json:"Cidade_Shopper,omitempty"`
 	CEP_Shopper                          string `json:"CEP_Shopper,omitempty"`
@@ -40,14 +40,14 @@ type PostReservationParams struct {
 	Geracao_de_Codigo_de_Abertura_de_Porta_na_Resposta_MS06 int              `json:"Geracao_de_Codigo_de_Abertura_de_Porta_na_Resposta_MS06,omitempty"`
 	Info_Encomendas                                         []infoEncomendas `json:"Info_Encomendas,omitempty"`
 	URL_CALL_BACK                                           string           `json:"URL_CALL_BACK,omitempty"`
-	Versao_Mensageria                                       string           `json:"Versao_Mensageira,omitempty"`
+	Versao_Mensageria                                       string           `json:"Versao_Mensageria,omitempty"`
 }
 
 type infoEncomendasResponse struct {
 	ID_Encomenda                   string `json:"ID_Encomenda,omitempty"`
-	Etiqueta_Encomenda_Rede1minuto string `json:"Etiqueta_Encomenda_Rede1,omitempty"`
-	Geracao_QRCODE                 string `json:"Geracao_QRC,omitempty"`
-	Geracao_Codigo_Abertura_Porta  string `json:"Geracao_Codigo_Abert,omitempty"`
+	Etiqueta_Encomenda_Rede1minuto string `json:"Etiqueta_Encomenda_Rede1minuto,omitempty"`
+	Geracao_QRCODE                 string `json:"Geracao_QRCODE,omitempty"`
+	Geracao_Codigo_Abertura_Porta  string `json:"Geracao_Codigo_Abertura_Porta,omitempty"`
 }
 
 type PostReservationResponse struct {
@@ -67,8 +67,8 @@ type PostReservationResponse struct {
 	Complemento_Locker             string                   `json:"Complemento,omitempty"`
 	ID_da_Porta_do_Locker          string                   `json:"ID_da_Porta_do_Locker,omitempty"`
 	ID_do_Operador_da_Porta_Locker string                   `json:"ID_do_Operador_da_Porta_Locker,omitempty"`
-	ID_Transacao_Unica             string                   `json:"ID_Transacao_Unica,omitempty"`
-	Tipo_de_Servico_Reserva        string                   `json:"Tipo_de_Servico_Reserva,omitempty"`
+	ID_Transacao_Unica             int                      `json:"ID_Transacao_Unica,omitempty"`
+	Tipo_de_Servico_Reserva        int                      `json:"Tipo_de_Servico_Reserva,omitempty"`
 	DataHora_Inicio_Reserva        string                   `json:"DataHora_Inicio_Reserva,omitempty"`
 	DataHora_Final_Reserva         string                   `json:"DataHora_Final_Reserva,omitempty"`
 	Info_Encomendas                []infoEncomendasResponse `json:"info_encomendas,omitempty"`
