@@ -1,4 +1,4 @@
-module github.com/andrepmagalhaes/redirector
+module github.com/andrepmagalhaes/gin_redirector
 
 go 1.17
 
